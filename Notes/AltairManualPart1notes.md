@@ -28,7 +28,9 @@
 	- Exclusive-OR (XOR) gate, which outputs true only if inputs differ—useful in binary addition (sum and carry logic)
 - Flip-flops (built with NAND circuits) act as flip-flops—basic memory elements that toggle state on pulses. Cascading flip-flops, monostable, and astable circuits enable counters, registers, timers, and oscillators.
 ## Part C
-While humans favor decimal (base-10), computers operate in binary. Other bases like octal (base-8) and hexadecimal (base-16) offer efficient shorthand for long binary strings.
+* Humans favor decimal (base-10) system because it is convenient to count with our fingers. 
+* However computers operate in binary because it is highly compatible with dual-state electronic circuits.
+* Computers also use other bases like octal (base-8) and hexadecimal (base-16) because they offer efficient shorthand for long binary strings.
 
 ## Part D
 
