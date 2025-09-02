@@ -9,7 +9,8 @@
 - This manual aims to serve both novices (with electronics experience) and experienced programmers (with limited electronics background). It introduces logic, number systems, and basic programming—preparing us for more advanced parts.
 
 ## Part A
-
+	George Boole, a ninteenth century British mathematician, made a detailed study of the relationship between certain fundamental logical expressions and their arithmetic counterparts, publishing “The Mathematical Analysis of Logic”, 1847; expanded 1854.
+	Boole’s system of logic, which is frequently called Boolean algebra, assumes that a logic condition or statement is either true or false. It cannot be both true and false, and it cannot be partially true or partially false. This works perfectly with computers which has a switch that can either be on or off (1/0).
 	-  Boolean logic uses binary values—true/false or ON/OFF, often represented as 1/0—perfectly suited to electronic circuits.
 Basic logic operations:
 	- AND: output is true only if both inputs are true.
