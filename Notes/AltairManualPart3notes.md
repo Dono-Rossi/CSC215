@@ -12,7 +12,17 @@
 * AUX Switches: Two unused switches reserved for future peripherals.
 #### Data/Address switches
 	* DATA (bits 7–0)
-	* ADDRESS (bits 15–0). For a 256-word system, only bits 0–7 are used. 
+	* ADDRESS (bits 15–0). For a 256-word system, only bits 0–7 are used.
+A switch that is up denotes a 1 bit while a down switch denotes a 0 bit.
+
+### 2. Indicator LEDs
+#### Note: When machine is stopped a glowing LED denotes an active status and a non-glowing LED denotes inactive. When running a program LEDs may be erroneus.
+* ADDRESS LEDs (A15–A0): Show current memory address.
+* DATA LEDs (D7–D0): Show data at that address
+* INTE: Interrupt enabled
+* PROT: Memory is protected
+* WAIT: CPU waiting
+* HLDA: Hold acknowledged 
 
 ## B. Loading a Sample Program
 
