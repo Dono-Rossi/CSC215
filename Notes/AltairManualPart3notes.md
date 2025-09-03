@@ -37,7 +37,13 @@ Indicate internal CPU and bus states:
 * INT: Interrupt acknowledged
 
 ## B. Loading a Sample Program
-
+A simple addition program in mnemonics: 
+0. LDA 
+1. MOV A→B 
+2. LDA 
+3. ADD A+B 
+4. STA 
+5. JMP
 ## C. Using Memory
 
 ## D. Memory Addressing
