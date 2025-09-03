@@ -24,6 +24,18 @@ A switch that is up denotes a 1 bit while a down switch denotes a 0 bit.
 * WAIT: CPU waiting
 * HLDA: Hold acknowledged 
 
+### 3. Status LEDs
+#### Note: A glowing LED denotes an active status for the designated condition.
+Indicate internal CPU and bus states:
+* MEMR: Memory read
+* INP: Input data address active
+* M1: The CPU is processing the first machine cycle of an instruction
+* OUT: Output phase
+* HLTA: HALT executed
+* STACK: Stack pointer active
+* WO: Write operation or output function (vs. read or input)
+* INT: Interrupt acknowledged
+
 ## B. Loading a Sample Program
 
 ## C. Using Memory
