@@ -8,9 +8,9 @@
 	- The use of assembly require you to study the internal structure of the machine and learn its instruction set
 
 CP/M has simplififed the process to learn assembly language
-	- The language is portable and independent of hardware, meaning that no matter the moel being used, the environment will be similar.
-	- CP/M makes all computers look alike
-	- Experimenting and making mistakes with a CP/M based computer is okay as it can't be damaged from the operator's console
+* The language is portable and independent of hardware, meaning that no matter the moel being used, the environment will be similar
+* CP/M makes all computers look alike
+* Experimenting and making mistakes with a CP/M based computer is okay as it can't be damaged from the operator's console
 
 ### Introduction
 - The keystrokes you are to make are displayed in bold
