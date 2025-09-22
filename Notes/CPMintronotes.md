@@ -27,6 +27,6 @@ CP/M has simplififed the process to learn assembly language
 ### Required Materials
 	- This book
 	- CP/M based computer
-        - Manual that accompanies the CP/M operating system
-        - Empty disk should be dedicated to exercises
+        - Manual that accompanies the CP/M computer
+        - Empty disk dedicated to exercises
 	- Copy of "8080/8085 Assembly Language Programming Manual"
