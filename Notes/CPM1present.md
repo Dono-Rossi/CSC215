@@ -1,6 +1,8 @@
 # The 8080 and it relatives
 ## Donovan
 
+Fun Fact: CP/M is a program originally written for the 8080
+
 #### 8080
 * The 8080 was not the first microprocessor, but its predecessors were so restricted
 * When the 8080 released, it was significant, as there wass now a CPU contained in a single package selling for a little more than $100
