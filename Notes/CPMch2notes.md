@@ -2,15 +2,15 @@
 
 
 #### Firmware Monitor
-
+- Because turning off a computer wipes its RAM, and waking computers initially read location 0 (which is RAM):
+    - A bootup ciruit is activated which masks the RAM and substitutes it with a "shadow PROM" which is executed and then disonnected.
 - The firmware monitor is a built-in, low-level control program residing in ROM.
 - It provides basic input/output (I/O) operations, diagnostic routines, and system initialization.
 - The monitor acts as an interface between the hardware and higher-level software like the operating system.
-- Typical firmware monitors allow basic hardware interaction, such as reading from keyboard, displaying text, and accessing disk drives.
+- Allow basic hardware interaction, such as reading from keyboard, displaying text, and accessing disk drives.
 
 #### Operating System (CP/M)
 
-- CP/M (Control Program for Microcomputers) is the operating system discussed; it manages hardware resources and provides services for user programs.
 - CP/M is loaded into RAM during system startup, typically after the monitor initializes the hardware.
 - The OS handles file management, program execution, memory allocation, and device control.
 - CP/M consists of system modules such as the Basic Input Output System (BIOS) and Basic Disk Operating System (BDOS).
