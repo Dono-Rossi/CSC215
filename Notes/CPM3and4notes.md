@@ -5,7 +5,7 @@
 ### Device Naming in CP/M:
 
 * CP/M uses logical names for devices, which are easier to refer to than full physical names (e.g., "CRT:" for the operator's console).
-* Logical device names you’ll use:
+* Logical device names to use:
     * CON: (Console, usually your CRT terminal)
     * LST: (List device, usually your line printer)
     * RDR: (Reader device, e.g., card or tape reader)
@@ -34,8 +34,30 @@
 * Devices are usually permanently connected; software controls which device is active.
 * In the exercises, you usually use CRT: as CON: and LPT: as LST:.
 
-
-
-
-
 ## Chapter 4
+
+###  Naming Conventions
+* Labels:
+    * Must be unique within a module.
+    * Typically uppercase (e.g., `READSECTOR`, `WRITECON`).
+* Prefixes:
+    * Often used to denote module or function (e.g., `CON_`, `DISK_`).
+* Comments:
+* Begin with `;` and explain logic or purpose.
+* Encouraged for maintainability.
+
+###  Code Structure
+* Modules:
+    * Divided by function (e.g., disk I/O, console I/O).
+    * Each module starts with a header and ends with a return.
+* Jump Tables:
+    * Used for indirect calls to BIOS routines.
+    * Facilitates portability and modularity.
+
+###  Register Usage
+* Standard conventions:
+    * HL: Pointer to data.
+    * DE: Destination address.
+    * BC: Counter or buffer size.
+* Preservation
+    * Some registers must be preserved across calls (especially `AF`).
