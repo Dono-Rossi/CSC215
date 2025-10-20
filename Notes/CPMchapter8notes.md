@@ -1,5 +1,12 @@
 # CP/M Chapter 8 Notes
-
+## THE TWELVE
+* Out of 256 possible cominations of eight binary bits, the 8080 used 244 of them, leaving TWELVE bit patterns unused
+* In the 8085, TWO of these TWELVE combinations are used, 20H and 30H
+* In the Z80, ALL of these TWELVE combinations are used, except the ones in the 8085 are for different functions 
+    * Used these TWELVE opcodes for more than TWELVE instructions
+    * Used a one-byte opcode to tell the CPU to fetch the next byte in memory, and decode that as a new instruction
+    * Acted as windows into a whole instruction set
+* This method of the Z80, uses more memory space and time, but provides very powerful instructions
 ## The National Semiconductor NSC800
 * The designers of the National NSC800 had it easy
     * Examined other's products and built off of them
@@ -30,4 +37,4 @@
 
 The JPE and JPO work in the Z80 only if the preceding ALU operation was logical: AND, OR, ZOR. However, the flag bit that record parity in the 8080 indicated operation overflow in the Z80.
 * Leads to 8080 programs that bomb on the Z80
-
+* BOMBED MICROSOFT BASIC :O
