@@ -27,6 +27,7 @@
 * Two conditional jumps that test parity of accumulator contents
     * JPE (Jump Parity Even): Transfer of program execution the specified address if accumulator contains an even number of one bits following an operation with the ALU 
     * JPO (Jump Parity Odd): Same as previous but if odd 
+
 The JPE and JPO work in the Z80 only if the preceding ALU operation was logical: AND, OR, ZOR. However, the flag bit that record parity in the 8080 indicated operation overflow in the Z80.
 * Leads to 8080 programs that bomb on the Z80
 
