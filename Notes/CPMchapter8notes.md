@@ -1,4 +1,30 @@
 # CP/M Chapter 8 Notes
+# By Donovan and Noah
+
+## The Evolution of the 8080
+"Version 2 (of anything) is the first version that actually works"
+- In the 8080 we have 244 commands avalibe to the programmer out of the 256 possible. 
+- The 12 that are not avalible to the programmer are pre programmed into the machine. 
+- 
+- The microprocessors involved in the altair 8080 and the 8085 have a few key differences that affect the performance of the machine the chips were found in
+1. One of the most important evolutions of the microprosessor is its power supply. 
+	- The 8080 required three different voltages, making the machine expensive and complex while the 8085 one required one, simplifying and reducing costs
+2. The 8085 also has two new opcodes, a one bit input and a one bit output and four hardware interrupt inputs that require interrupt vectors to be added to low memory if they are used. 
+3. The 8085 also executes commands faster than the 8080
+
+## The Zilog Z80
+- In the 8080, there were 12 unused opcodes
+- the 8085 filled 2 of them
+- the Z80, another descendent of the 8080, uses all 12
+- This increases uses but can also get complicated when people try to move back and forth between the individual microprocessors
+- The easiest solution is just to use the instructions on the origional 8080 set, which in standard throughout all versions
+ 
+## Avoiding Conflicts 
+- On Z80, there are commands that just don't work on the CP/M assembler
+- Becasue of this, many conflicts arise when the Z80 clashes with CPM
+- To solve this, the 8080 provides 'absolute adressing' where Jump instructions go to a definite location in memory
+- the Z80 adds 'relative adressing' where a jump can be specified to a location
+
 ## THE TWELVE
 * Out of 256 possible cominations of eight binary bits, the 8080 used 244 of them, leaving TWELVE bit patterns unused
 * In the 8085, TWO of these TWELVE combinations are used, 20H and 30H
@@ -7,6 +33,7 @@
     * Used a one-byte opcode to tell the CPU to fetch the next byte in memory, and decode that as a new instruction
     * Acted as windows into a whole instruction set
 * This method of the Z80, uses more memory space and time, but provides very powerful instructions
+
 ## The National Semiconductor NSC800
 * The designers of the National NSC800 had it easy
     * Examined other's products and built off of them
