@@ -18,12 +18,6 @@
 - This increases uses but can also get complicated when people try to move back and forth between the individual microprocessors
 - The easiest solution is just to use the instructions on the origional 8080 set, which in standard throughout all versions
  
-## Avoiding Conflicts 
-- On Z80, there are commands that just don't work on the CP/M assembler
-- Becasue of this, many conflicts arise when the Z80 clashes with CPM
-- To solve this, the 8080 provides 'absolute adressing' where Jump instructions go to a definite location in memory
-- the Z80 adds 'relative adressing' where a jump can be specified to a location
-
 ## THE TWELVE
 * Out of 256 possible cominations of eight binary bits, the 8080 used 244 of them, leaving TWELVE bit patterns unused
 * In the 8085, TWO of these TWELVE combinations are used, 20H and 30H
@@ -64,3 +58,10 @@
 The JPE and JPO work in the Z80 only if the preceding ALU operation was logical: AND, OR, ZOR. However, the flag bit that record parity in the 8080 indicated operation overflow in the Z80.
 * Leads to 8080 programs that bomb on the Z80
 * BOMBED MICROSOFT BASIC :O
+
+## Avoiding Conflicts
+- On Z80, there are commands that just don't work on the CP/M assembler
+- Becasue of this, many conflicts arise when the Z80 clashes with CPM
+- To solve this, the 8080 provides 'absolute adressing' where Jump instructions go to a definite location in memory
+- the Z80 adds 'relative adressing' where a jump can be specified to a location
+
