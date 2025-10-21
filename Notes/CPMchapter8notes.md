@@ -5,7 +5,6 @@
 "Version 2 (of anything) is the first version that actually works"
 - In the 8080 we have 244 commands avalibe to the programmer out of the 256 possible. 
 - The 12 that are not avalible to the programmer are pre programmed into the machine. 
-- 
 - The microprocessors involved in the altair 8080 and the 8085 have a few key differences that affect the performance of the machine the chips were found in
 1. One of the most important evolutions of the microprosessor is its power supply. 
 	- The 8080 required three different voltages, making the machine expensive and complex while the 8085 one required one, simplifying and reducing costs
