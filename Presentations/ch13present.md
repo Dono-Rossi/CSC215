@@ -40,3 +40,4 @@ This chapter will introduce the concept of "Buffered Input/Output" in CP/M assem
     - Uses this for breakpointing program during tests
     - At breakpoints, DDT plugs 0FFH into the program
     - This causes a software interrupt, as DDT saves and displays the contents of CPU registers
+- Lets you set breakpoints, single‑step or trace execution, examine/modify registers and memory, dump memory contents, and intercept BDOS calls.
