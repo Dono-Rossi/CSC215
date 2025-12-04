@@ -1,4 +1,3 @@
-CHeck inputs for ints, then atoi it. Read inputs, check if an int, if not return something, then add together the inputs and return.
 #include <stdio.h>
 
 atoi(s)
@@ -22,8 +21,7 @@ char **argv;
 	printf("Enter numbers")
 	if (scanf("%d", &num) == 1 {
 		for (i = 1; i < argc; i++) {
-			sum += atoi(argv[i]);
-	}
+			sum += atoi(argv[i]);}
 	} else { 
 		print("enter only integers")
 	}
