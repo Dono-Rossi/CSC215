@@ -1,3 +1,4 @@
+CHeck inputs for ints, then atoi it. Read inputs, check if an int, if not return something, then add together the inputs and return.
 #include <stdio.h>
 
 atoi(s)
@@ -11,24 +12,21 @@ char s[];
 	return(n);
 }
 
-main()
+main(argc, argv)
+int argc;
+char **argv;
 {
-	int c, i, nwhite, nother;
-	int ndigit[10];
-
-	nwhite = nother = 0;
-	for (i = 0; i < 10; ++i)
-		ndigit[i] = 0;
-
-	while ((c = getchar()) != EOF)
-		if (c >= '0' && c <= '9')
-			++ndigit[c-'0'];
-		else if (c == ' ' || c == '\n' || c == '\t')
-			++nwhite;
-		else
-			++nother;
-	printf('digits =");
-	for (i = 0; i < 10; ++i);
-		printf(" %d", ndigit[i]);
-	printf("\nwhite space = %d, other = %d\n", nwhite, nother);
+	int sum = 0;
+	int i;
+	int num;
+	printf("Enter numbers")
+	if (scanf("%d", &num) == 1 {
+		for (i = 1; i < argc; i++) {
+			sum += atoi(argv[i]);
+	}
+	} else { 
+		print("enter only integers")
+	}
+	printf(sum);
+	return 0;
 }
