@@ -22,13 +22,13 @@ char **argv;
 	for (i = 1; i < argc; i++) {
 		for(j = 0; argv[i][j] != '\0'; j++){
 			if (argv[i][j] < '0' || argv[i][j] > '9'){
-			printf("Error, %s is not a number, argc[i]); 
-			return(-1); 
+				printf("Error, %s is not a number", argv[i]); 
+				return -1; 
 			}
 		}
 	sum += atoi(argv[i]);
 	
 }
-	printf("%u", sum);
+	printf("%d", sum);
 	return 0;
 }
