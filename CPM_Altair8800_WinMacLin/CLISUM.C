@@ -15,15 +15,15 @@ main(argc, argv)
 int argc;
 char **argv;
 {
-	int sum = 0;
+	int sum;
 	int i;
 	int num;
-	printf("Enter numbers")
-	if (scanf("%d", &num) == 1 {
+	printf("Enter numbers");
+	if (scanf("%d", &num) == 1) {
 		for (i = 1; i < argc; i++) {
 			sum += atoi(argv[i]);}
 	} else { 
-		print("enter only integers")
+		print("enter only integers");
 	}
 	printf(sum);
 	return 0;
