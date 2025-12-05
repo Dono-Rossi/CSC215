@@ -16,15 +16,19 @@ int argc;
 char **argv;
 {
 	int sum;
+	sum = 0;
 	int i;
-	int num;
-	printf("Enter numbers");
-	if (scanf("%d", &num) == 1) {
-		for (i = 1; i < argc; i++) {
-			sum += atoi(argv[i]);}
-	} else { 
-		print("enter only integers");
-	}
-	printf(sum);
+	int j;
+	for (i = 1; i < argc; i++) {
+		for(j = 0; argv[i][j] != '\0'; j++){
+			if (argv[i][j] < '0' || argv[i][j] > '9'){
+			printf("Error, %s is not a number, argc[i]); 
+			return(-1); 
+			}
+		}
+	sum += atoi(argv[i]);
+	
+}
+	printf("%u", sum);
 	return 0;
 }
