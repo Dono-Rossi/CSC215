@@ -19,7 +19,6 @@ int main()
     char buffer[100];
 
 
-    /* Test pointer version (K&R-style definition above) */
     buffer[0] = '\0';
     strcat_ptr(buffer, "Hello");
     strcat_ptr(buffer, ", ");
