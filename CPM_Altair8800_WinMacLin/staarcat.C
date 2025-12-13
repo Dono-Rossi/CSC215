@@ -1,3 +1,6 @@
+
+#include <stdio.h>
+
 char *strcat_ptr(s, t)
 char *s;
 char *t;
@@ -13,11 +16,11 @@ char *t;
     return s;
 }
 
-/* Demonstration main */
 int main()
 {
     char buffer[100];
 
+    printf("starcat starting...\n"); /* makes it obvious the program ran */
 
     /* Test pointer version (K&R-style definition above) */
     buffer[0] = '\0';
