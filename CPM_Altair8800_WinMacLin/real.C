@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-/* reverse_ptr: reverse string s in place */
-void reverse_ptr(s)
+/* reverse_ptr) */
+reverse_ptr(s)
 char *s;
 {
     char *i, *j, tmp;
@@ -20,12 +20,15 @@ char *s;
     }
 }
 
-/* atoi_ptr: convert string s to integer */
+/* atoi_ptr */
 int atoi_ptr(s)
 char *s;
 {
-    int n = 0;
-    int sign = 1;
+    int n;
+    int sign;
+
+    n = 0;
+    sign = 1;
 
     /* skip leading whitespace */
     while (*s == ' ' || *s == '\t' || *s == '\n')
@@ -45,8 +48,8 @@ char *s;
     return sign * n;
 }
 
-/* itoa_ptr: convert integer n to string s (writes terminating '\0') */
-void itoa_ptr(n, s)
+/* itoa_ptr */
+itoa_ptr(n, s)
 int n;
 char *s;
 {
@@ -71,20 +74,21 @@ char *s;
     reverse_ptr(s);
 }
 
-/* strcat_ptr: concatenate t to end of s (returns s) */
+/* strcat_ptr */
 char *strcat_ptr(s, t)
 char *s;
 char *t;
 {
-    char *p = s;
+    char *p;
+    p = s;
     while (*p)      /* find end of s */
         p++;
-    while ((*p++ = *t++) != '\0') /* copy t including \0 */
+    while ((*p++ = *t++) != '\0') /* copy t including '\0' */
         ;
     return s;
 }
 
-/* Demo main */
+/* Demo */
 int main()
 {
     char buf[100];
