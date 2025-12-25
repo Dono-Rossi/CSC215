@@ -88,27 +88,80 @@ BigInt operator + (const BigInt & big, int small);
 ## Page 10
 
 ### 1. C++ error handling behavior
+Typical behavior:
+- File not found: the input stream enters a fail state.
+- Integer overflow: undefined behavior or wraparound.
+- Divide by zero: undefined behavior or program termination.
 
+Alternative approaches:
+- Exceptions, which are safer and clearer.
+- Error codes, which are simpler but easier to misuse.
 ### 2. BigInt error enum
+enum BigIntError {
+    NO_ERROR,
+    OVERFLOW_ERROR,
+    DIVIDE_BY_ZERO,
+    INVALID_DIGIT,
+    NEGATIVE_FACTORIAL
+};
 
 ### 3. Turning Off Error Checking
-
+Circumstances:
+- Performance-critical applications where speed outweighs safety (e.g., scientific simulations, graphics rendering).
+- Environments where input is guaranteed valid (e.g., controlled embedded systems).
+- When error checking overhead significantly impacts throughput.
 ### 4. Interactive Error-Handling Approach
-#### Strengths:
+#### Strengths: 
+- User can immediately correct errors without restarting the program.
+- Provides flexibility (halt, ignore, or fix).
+- Useful in educational or debugging contexts.
 #### Weaknesses:
-
+- Slows down automated or batch processes.
+- Requires user presence, unsuitable for background services.
+- Risk of inconsistent state if user chooses to ignore errors.
 ### 5. Global Variable for Error Results
 #### Strengths:
+- Simple to implement.
+- Centralized error reporting.
+- Low overhead compared to exceptions.
 #### Weaknesses:
-
-## PAge 17
+Not thread-safe (global state can be overwritten).
+- Easy to forget to check the global variable.
+- Harder to manage in large systems with multiple modules.
+- Lacks granularity—only one error state at a time.
+## Page 17
 
 ### 1. Why is a char vector used to store digits instead of an int vector? How does this affect implementation?
-
+- Because each digit only needs to store values from 0-9.
+- Chars use less memory than ints.
+- Chars simplify carry and borrow logic.
+- Char's make it easier to implement the digit-by-digit nature of manual arithmetic.
+If the element type changes:
+- All arithmetic logic must be rewritten.
+- Carry/borrow calculations change.
+- Memory usage and performance are affected.
+- Every BigInt member function must be updated to match the new representation.
 ### 2. Alternatives to using an enum for the sign of a BigInt
-
+- A bool value (e.g., true = negative, false = positive).
+- An int value (e.g., -1 for negative, +1 for positive).
 ### 3. Write the GetDigit function and discuss possible errors
+int GetDigit(size index) const;
+- first arguement is size of the int, the second is the index in the int
+Errors to worry about:
+- Index out of bounds.
+- Accessing digits that do not exist.
+- Invalid BigInt state.
 
 #### 4. Why are `operator==` and `operator<` difficult to write? Write `operator==` for positive BigInts
-
+Difficulty:
+- Digits are accessed only through `GetDigit`.
+- No direct access to internal storage.
+- Requires repeated function calls and careful indexing.
+The == operator could be written by compering the length of the string first, if it is teh same, go through each digit and compare them to see if the two things are the same. 
 #### 5. Why is `apvector` better than built-in arrays for BigInt?
+Advantages of `apvector`:
+- Automatically resizes.
+- Manages memory safely.
+- Supports copying and assignment.
+- Reduces risk of memory leaks.
+- Makes the BigInt class easier to maintain and extend.
