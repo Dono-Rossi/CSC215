@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "BIGINT.H"
+#include "bigint.H"
 
 void set_bigint(numstr, num)
 char *numstr;
