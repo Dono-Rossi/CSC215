@@ -6,3 +6,4 @@ struct bigint {
 
 void set_bigint();
 char* get_bigint();
+void add_bigint();

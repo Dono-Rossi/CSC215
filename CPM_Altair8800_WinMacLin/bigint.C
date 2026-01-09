@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "bigint.H"
+#include "BIGINT.H"
 
 void set_bigint(numstr, num)
 char *numstr;
@@ -31,4 +31,12 @@ struct bigint *num;
    }
    numstr[num->numdigits+start_pos] = '\0';
    return numstr;
+}
+
+void add_bigint(bi1,bi2,biout)
+struct bigint *bi1;
+struct bigint *bi2;
+struct bigint *biout;
+{
+
 }
