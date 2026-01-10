@@ -21,9 +21,6 @@ main() {
         ASSERT_STR(get_bigint(biout), "6");
 }
     TEST_CASE("Add two double digit numbers"){
-        struct bigint bi1;
-        struct bigint bi2;
-        struct bigint biout;
         set_bigint("12", &bi1);
         set_bigint("14", &bi2);
         ASSERT_STR(get_bigint(bi1), "12");
@@ -32,9 +29,6 @@ main() {
         ASSERT_STR(get_bigint(biout), "26");
 }
     TEST_CASE("Add two ten digit numbers"){
-        struct bigint bi1;
-        struct bigint bi2;
-        struct bigint biout;
         set_bigint("1234567891", &bi1);
         set_bigint("1987654321", &bi2);
         ASSERT_STR(get_bigint(bi1), "1234567891");
@@ -43,9 +37,6 @@ main() {
         ASSERT_STR(get_bigint(biout), "3222222212");
 }
     TEST_CASE("Add two different length numbers"){
-        struct bigint bi1;
-        struct bigint bi2;
-        struct bigint biout;
         set_bigint("2298", &bi1);
         set_bigint("43", &bi2);
         ASSERT_STR(get_bigint(bi1), "2298");
@@ -54,9 +45,6 @@ main() {
         ASSERT_STR(get_bigint(biout), "2341");
 }
     TEST_CASE("Add two different length numbers"){
-        struct bigint bi1;
-        struct bigint bi2;
-        struct bigint biout;
         set_bigint("67", &bi1);
         set_bigint("6700", &bi2);
         ASSERT_STR(get_bigint(bi1), "67");

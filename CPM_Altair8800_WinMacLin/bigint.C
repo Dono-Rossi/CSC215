@@ -38,5 +38,46 @@ struct bigint *bi1;
 struct bigint *bi2;
 struct bigint *biout;
 {
-
+    char maxdigits, i, carry, digit1, digit2, sum;
+    char leading_zeros;
+    
+    maxdigits = (bi1->numdigits > bi2->numdigits) ? bi1->numdigits : bi2->numdigits;
+    biout->digits = alloc(maxdigits + 1);
+    biout->negative = 0;
+    carry = 0;
+    
+    for (i = 0; i < maxdigits; i++) {
+        if (i < bi1->numdigits) {
+            digit1 = bi1->digits[i] - '0';
+        } else {
+            digit1 = 0;
+        }
+        
+        if (i < bi2->numdigits) {
+            digit2 = bi2->digits[i] - '0';
+        } else {
+            digit2 = 0;
+        }
+        
+        sum = digit1 + digit2 + carry;
+        carry = sum / 10;
+        biout->digits[i] = (sum % 10) + '0';
+    }
+    
+    if (carry > 0) {
+        biout->digits[maxdigits] = carry + '0';
+        biout->numdigits = maxdigits + 1;
+    } else {
+        biout->numdigits = maxdigits;
+    }
+    
+    leading_zeros = 0;
+    for (i = biout->numdigits - 1; i > 0; i--) {
+        if (biout->digits[i] == '0') {
+            leading_zeros++;
+        } else {
+            break;
+        }
+    }
+    biout->numdigits -= leading_zeros;
 }
