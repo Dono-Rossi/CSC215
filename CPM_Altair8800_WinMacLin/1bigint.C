@@ -38,7 +38,10 @@ struct bigint *bi1;
 struct bigint *bi2;
 struct bigint *biout;
 {
-if (bi1->negative == 0 && bi2->negative == 0) {
+    char cmp;
+
+    /* Same-sign: just add magnitudes and set sign */
+    if (bi1->negative == 0 && bi2->negative == 0) {
         add_abs(bi1, bi2, biout);
         biout->negative = 0;
         return;
@@ -46,13 +49,49 @@ if (bi1->negative == 0 && bi2->negative == 0) {
         add_abs(bi1, bi2, biout);
         biout->negative = 1;
         return;
-    } else if (bi1->negative == 0 && bi2->negative == 1) {
-        /* bi1 + (-bi2) => bi1 - bi2 */
-        sub_bigint(bi1, bi2, biout);
-        return;
-    } else { /* bi1 negative, bi2 positive: (-bi1) + bi2 => bi2 - bi1 */
-        sub_bigint(bi2, bi1, biout);
-        return;
+    }
+
+    /* Different signs: perform magnitude subtraction and pick sign by magnitude */
+    if (bi1->negative == 0 && bi2->negative == 1) {
+        /* (+A) + (-B) => A - B */
+        cmp = compare_abs(bi1, bi2);
+        if (cmp == 0) {
+            biout->digits = alloc(1);
+            biout->digits[0] = '0';
+            biout->numdigits = 1;
+            biout->negative = 0;
+            return;
+        } else if (cmp > 0) {
+            /* |bi1| > |bi2| => positive result */
+            sub_abs(bi1, bi2, biout);
+            biout->negative = 0;
+            return;
+        } else {
+            /* |bi2| > |bi1| => negative result */
+            sub_abs(bi2, bi1, biout);
+            biout->negative = 1;
+            return;
+        }
+    } else {
+        /* bi1 negative, bi2 positive: (-A) + B => B - A */
+        cmp = compare_abs(bi2, bi1);
+        if (cmp == 0) {
+            biout->digits = alloc(1);
+            biout->digits[0] = '0';
+            biout->numdigits = 1;
+            biout->negative = 0;
+            return;
+        } else if (cmp > 0) {
+            /* |bi2| > |bi1| => positive result */
+            sub_abs(bi2, bi1, biout);
+            biout->negative = 0;
+            return;
+        } else {
+            /* |bi1| > |bi2| => negative result */
+            sub_abs(bi1, bi2, biout);
+            biout->negative = 1;
+            return;
+        }
     }
 }
 
