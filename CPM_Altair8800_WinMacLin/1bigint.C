@@ -40,7 +40,7 @@ struct bigint *biout;
 {
     char cmp;
 
-    /* Same-sign: just add magnitudes and set sign */
+    /* Same-sign: add magnitudes and set sign */
     if (bi1->negative == 0 && bi2->negative == 0) {
         add_abs(bi1, bi2, biout);
         biout->negative = 0;
@@ -51,7 +51,7 @@ struct bigint *biout;
         return;
     }
 
-    /* Different signs: perform magnitude subtraction and pick sign by magnitude */
+    /* Different signs: perform magnitude subtraction and choose sign */
     if (bi1->negative == 0 && bi2->negative == 1) {
         /* (+A) + (-B) => A - B */
         cmp = compare_abs(bi1, bi2);
@@ -62,18 +62,16 @@ struct bigint *biout;
             biout->negative = 0;
             return;
         } else if (cmp > 0) {
-            /* |bi1| > |bi2| => positive result */
-            sub_abs(bi1, bi2, biout);
+            sub_abs(bi1, bi2, biout);  /* |A| > |B| => positive */
             biout->negative = 0;
             return;
         } else {
-            /* |bi2| > |bi1| => negative result */
-            sub_abs(bi2, bi1, biout);
+            sub_abs(bi2, bi1, biout);  /* |B| > |A| => negative */
             biout->negative = 1;
             return;
         }
     } else {
-        /* bi1 negative, bi2 positive: (-A) + B => B - A */
+        /* (-A) + B => B - A */
         cmp = compare_abs(bi2, bi1);
         if (cmp == 0) {
             biout->digits = alloc(1);
@@ -82,13 +80,11 @@ struct bigint *biout;
             biout->negative = 0;
             return;
         } else if (cmp > 0) {
-            /* |bi2| > |bi1| => positive result */
-            sub_abs(bi2, bi1, biout);
+            sub_abs(bi2, bi1, biout);  /* |B| > |A| => positive */
             biout->negative = 0;
             return;
         } else {
-            /* |bi1| > |bi2| => negative result */
-            sub_abs(bi1, bi2, biout);
+            sub_abs(bi1, bi2, biout);  /* |A| > |B| => negative */
             biout->negative = 1;
             return;
         }
