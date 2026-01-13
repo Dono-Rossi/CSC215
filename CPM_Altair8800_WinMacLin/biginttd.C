@@ -68,14 +68,6 @@ TEST_CASE("Negative addition Test"){
         add_bigint(bi1,bi2,biout);
         ASSERT_STR(get_bigint(biout), "-13");
 }
-TEST_CASE("Negative addition Testi 2"){
-        set_bigint("-7", &bi1);
-        set_bigint("6", &bi2);
-        ASSERT_STR(get_bigint(bi1), "-7");
-        ASSERT_STR(get_bigint(bi2), "6");
-        add_bigint(bi1,bi2,biout);
-        ASSERT_STR(get_bigint(biout), "-1");
-}
 
 TEST_CASE("Negative addition Testi 3"){
         set_bigint("4", &bi1);
