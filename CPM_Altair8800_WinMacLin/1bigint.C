@@ -61,9 +61,13 @@ struct bigint *bi1;
 struct bigint *bi2;
 struct bigint *biout;
 {
-    char s1 = bi1->negative;
-    char s2 = bi2->negative;
+    
+    char s1;
+    char s2;
     char cmp;
+
+    s1 = bi1->negative;
+    s2 = bi2->negative;
 
     /* Case analysis on signs:
        R = bi1 - bi2
