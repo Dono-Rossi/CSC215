@@ -48,10 +48,10 @@ if (bi1->negative == 0 && bi2->negative == 0) {
         return;
     } else if (bi1->negative == 0 && bi2->negative == 1) {
         /* bi1 + (-bi2) => bi1 - bi2 */
-        sub_bigints(bi1, bi2, biout);
+        sub_bigint(bi1, bi2, biout);
         return;
     } else { /* bi1 negative, bi2 positive: (-bi1) + bi2 => bi2 - bi1 */
-        sub_bigints(bi2, bi1, biout);
+        sub_bigint(bi2, bi1, biout);
         return;
     }
 }
@@ -120,5 +120,100 @@ struct bigint *biout;
             biout->negative = 1;
             return;
         }
+    }
+}
+
+void add_abs(bi1, bi2, biout)
+struct bigint *bi1;
+struct bigint *bi2;
+struct bigint *biout;
+{
+    char maxdigits, i, carry, digit1, digit2, sum;
+    maxdigits = (bi1->numdigits > bi2->numdigits) ? bi1->numdigits : bi2->numdigits;
+    biout->digits = alloc(maxdigits + 1);
+    carry = 0;
+
+    for (i = 0; i < maxdigits; i++) {
+        if (i < bi1->numdigits) {
+            digit1 = bi1->digits[i] - '0';
+        } else {
+            digit1 = 0;
+        }
+
+        if (i < bi2->numdigits) {
+            digit2 = bi2->digits[i] - '0';
+        } else {
+            digit2 = 0;
+        }
+
+        sum = digit1 + digit2 + carry;
+        carry = sum / 10;
+        biout->digits[i] = (sum % 10) + '0';
+    }
+
+    if (carry > 0) {
+        biout->digits[maxdigits] = carry + '0';
+        biout->numdigits = maxdigits + 1;
+    } else {
+        biout->numdigits = maxdigits;
+    }
+    /* ensure no leading zeros in representation (shouldn't be any) */
+    if (biout->numdigits == 0) {
+        biout->numdigits = 1;
+        biout->digits[0] = '0';
+    }
+}
+
+char* compare_abs(bi1, bi2)
+struct bigint *bi1;
+struct bigint *bi2;
+{
+    char i;
+    if (bi1->numdigits > bi2->numdigits) return 1;
+    if (bi1->numdigits < bi2->numdigits) return -1;
+    for (i = bi1->numdigits - 1; i >= 0; i--) {
+        if (bi1->digits[i] > bi2->digits[i]) return 1;
+        if (bi1->digits[i] < bi2->digits[i]) return -1;
+        if (i == 0) break; /* avoid underflow of char when 0 */
+    }
+    return 0;
+}
+
+void sub_abs(larger, smaller, biout)
+struct bigint *larger;
+struct bigint *smaller;
+struct bigint *biout;
+{
+    char i, borrow, d1, d2, diff;
+    biout->digits = alloc(larger->numdigits);
+    borrow = 0;
+
+    for (i = 0; i < larger->numdigits; i++) {
+        d1 = larger->digits[i] - '0';
+        if (i < smaller->numdigits) {
+            d2 = smaller->digits[i] - '0';
+        } else {
+            d2 = 0;
+        }
+        diff = d1 - d2 - borrow;
+        if (diff < 0) {
+            diff += 10;
+            borrow = 1;
+        } else {
+            borrow = 0;
+        }
+        biout->digits[i] = diff + '0';
+    }
+
+    /* trim leading zeros (most significant digits) */
+    for (i = larger->numdigits - 1; i > 0; i--) {
+        if (biout->digits[i] != '0') break;
+        /* continue trimming */
+    }
+    biout->numdigits = i + 1; /* i is index of most significant non-zero digit */
+    /* if everything zero, ensure a single zero digit */
+    if (biout->numdigits == 0) {
+        biout->numdigits = 1;
+        biout->digits[0] = '0';
     }
 }
