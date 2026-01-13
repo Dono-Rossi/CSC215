@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include "BIGINT.H"
-/*
-This is a test program for bigint struct.
-*/
 
 void set_bigint(numstr, num)
 char *numstr;
@@ -41,14 +38,7 @@ struct bigint *bi1;
 struct bigint *bi2;
 struct bigint *biout;
 {
-    /* We will compute R = bi1 + bi2 taking into account unary minus flags.
-       Cases:
-         both positive -> add_abs, negative = 0
-         both negative -> add_abs, negative = 1
-         differing signs -> subtraction: bigger - smaller (in absolute),
-            sign depends on which absolute is larger
-    */
-    if (bi1->negative == 0 && bi2->negative == 0) {
+if (bi1->negative == 0 && bi2->negative == 0) {
         add_abs(bi1, bi2, biout);
         biout->negative = 0;
         return;
@@ -75,9 +65,19 @@ struct bigint *biout;
     char s2 = bi2->negative;
     char cmp;
 
+    /* Case analysis on signs:
+       R = bi1 - bi2
+       if s1==0 && s2==0: R = |bi1| - |bi2|
+       if s1==0 && s2==1: R = |bi1| + |bi2|
+       if s1==1 && s2==0: R = - (|bi1| + |bi2|)
+       if s1==1 && s2==1: R = |bi2| - |bi1|  (because -|bi1| - (-|bi2|) = |bi2|-|bi1|)
+    */
+
     if (s1 == 0 && s2 == 0) {
+        /* |bi1| - |bi2| */
         cmp = compare_abs(bi1, bi2);
         if (cmp == 0) {
+            /* zero */
             biout->digits = alloc(1);
             biout->digits[0] = '0';
             biout->numdigits = 1;
@@ -93,14 +93,17 @@ struct bigint *biout;
             return;
         }
     } else if (s1 == 0 && s2 == 1) {
+        /* |bi1| + |bi2| */
         add_abs(bi1, bi2, biout);
         biout->negative = 0;
         return;
     } else if (s1 == 1 && s2 == 0) {
+        /* -(|bi1| + |bi2|) */
         add_abs(bi1, bi2, biout);
         biout->negative = 1;
         return;
-    } else { 
+    } else { /* s1 == 1 && s2 == 1 */
+        /* |bi2| - |bi1| */
         cmp = compare_abs(bi2, bi1);
         if (cmp == 0) {
             biout->digits = alloc(1);

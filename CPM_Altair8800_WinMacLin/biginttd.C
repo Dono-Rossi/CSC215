@@ -52,5 +52,14 @@ main() {
         add_bigint(bi1,bi2,biout);
         ASSERT_STR(get_bigint(biout), "6767");
 }
-    END_TESTING();
+    TEST_CASE("Subtraction Test"){
+        set_bigint("67", &bi1);
+        set_bigint("6700", &bi2);
+        ASSERT_STR(get_bigint(bi1), "7");
+        ASSERT_STR(get_bigint(bi2), "6");
+        sub_bigint(bi1,bi2,biout);
+        ASSERT_STR(get_bigint(biout), "1");
+}   
+ END_TESTING();
 }
+
