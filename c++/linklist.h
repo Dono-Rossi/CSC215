@@ -1,3 +1,11 @@
+#ifndef LINKLIST_H
+#define LINKLIST_H
+
+#include <string>
+#include <stdexcept>
+
+using std::string;
+
 struct Node {
     int cargo;
     Node* next;
