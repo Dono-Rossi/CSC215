@@ -1,7 +1,7 @@
 CC=g++
 STD=c++11
 
-build/%.o: src/%.cpp
+build/%.o: %.cpp
 	@mkdir -p build
 	@$(CC) -MM -MT $@ $< > build/$*.d
 	$(CC) -c -o $@ $< -std=$(STD)

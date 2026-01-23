@@ -8,5 +8,3 @@ TEST_CASE("Test can create and render List Nodes") {
     Node* node1 = new Node;
     CHECK(node1->cargo == 0);
 }
-
-
