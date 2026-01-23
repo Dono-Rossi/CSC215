@@ -43,36 +43,35 @@ string render_list(Node* list) {
 }
 
 
-string render_list_backward(Node*, string="");{
+std::string render_list_backward(Node* list) {
     if (list == nullptr) return "";
-    Node* head = list;
-    Node* tail = list->next;
-
-    s = render_list_backward(tail, s) + s;
-    if (head->next != nullptr)
-        s += ", ";
-    s += head->to_string();
-
-    return s;
+    std::string rest = render_list_backward(list->next);
+    if (rest.empty())
+        return list->to_str();
+    else
+        return rest + ", " + list->to_str();
 }
 
 string render_pretty(Node* list, string (*list_renderer)(Node*)) {
     return "(" + list_renderer(list) + ")";
 }
 
-string render_list_backward(Node* list)
-{
-    return render_backward_worker(list, "");
+std::string render_pretty(Node* list, std::string (*list_renderer)(Node*)) {
+    return "(" + list_renderer(list) + ")";
 }
 
+// Remove the second node from the list and return it.
+// If there is no second node, return nullptr.
 Node* remove_second(Node* list) {
+    if (list == nullptr) return nullptr;
     Node* first = list;
     Node* second = list->next;
+    if (second == nullptr) return nullptr;
 
-    // make the first node point to the third
+    // link first -> third (may be nullptr)
     first->next = second->next;
 
-    // remove the second node from the list and return a pointer to it
+    // detach second and return it
     second->next = nullptr;
     return second;
 }
@@ -83,10 +82,10 @@ class LinkedList
     Node* head;
 
 public:
-    LinkedList() {
-        num_nodes = 0;
-        head = nullptr;
-    }
+    LinkedList() : num_nodes(0), head(nullptr) {}
+
+    void insert_at_front(int cargo);
+    // other non-templated list operations could go here
 };
 
 void LinkedList::insert_at_front(int cargo) {
